@@ -1,0 +1,91 @@
+:root {
+  font-family: Segoe UI, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 700;
+
+  /* color-scheme: light dark; */
+  color: #6BBF59;
+  background-color: #F5F8F2;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
+  padding-inline: 15vw;
+  min-width: 320px;
+  
+}
+
+header {
+  padding-top: 2vh;
+}
+
+main {
+  justify-self: center;
+  background-color: #ffffff ;
+  padding: 3rem;
+}
+
+footer {
+  display: inline;
+  justify-items: center;
+  justify-self: center;
+  padding-bottom: 3vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #6BBF59;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #ffffff;
+}
+button:hover {
+  border-color: #398E37;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.buttonForm {
+  margin: 1rem;
+}
+
+label {
+  margin: 1rem;
+}
+
+.slogan{
+  margin: 0;
+}
+
+form {
+  background-color: #F5F8F2;
+}
