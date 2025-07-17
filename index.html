@@ -18,17 +18,26 @@
     </header>
     <main>
       <form>
-        <label for="Fname">
+        <label for="name">
           <span>Nombre:</span>
-          <input type="text" id="Fname" name="name"/>
+          <input type="text" id="name" name="name" required/>
         </label>
-        <label for="Fage">
+        <label for="phone">
+          <span>Telefono</span>
+          <input type="tel" id="phone" name="phone" required>
+        </label>
+        <label for="email">
+          <span>Correo</span>
+          <input type="email" id="email" name="email" required>
+        </label>
+        <label for="age">
           <span>Edad:</span>
-          <input type="number" id="Fage" name="age">
+          <input type="number" id="age" name="age" required>
         </label>
         <label>
           <span>Genero:</span>
-          <select name="gender" id="fgender">
+          <select name="gender" id="gender" required>
+            <option value="">--Selecciona una opción--</option>
             <option value="male">Masculino</option>
             <option value="female">femenino</option>
           </select>

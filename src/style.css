@@ -37,9 +37,11 @@ header {
 }
 
 main {
+  width: 100%;
+  height: auto;
   justify-self: center;
   background-color: #ffffff ;
-  padding: 3rem;
+  padding: 2vh;
 }
 
 footer {
@@ -75,7 +77,11 @@ button:focus-visible {
 }
 
 .buttonForm {
-  margin: 1rem;
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  margin-top: 2rem;
+
 }
 
 label {
@@ -88,4 +94,10 @@ label {
 
 form {
   background-color: #F5F8F2;
+  padding: 2vh;
+
+}
+#age {
+  width: 2vw;
+  text-align: center;
 }
