@@ -17,14 +17,14 @@
       
     </header>
     <main>
-      <form>
+      <form name="newPerson">
         <label for="name">
           <span>Nombre:</span>
           <input type="text" id="name" name="name" required/>
         </label>
         <label for="phone">
-          <span>Telefono</span>
-          <input type="tel" id="phone" name="phone" required>
+          <span>Teléfono</span>
+          <input type="tel" id="phone" name="phone" size="10" maxlength="10" required>
         </label>
         <label for="email">
           <span>Correo</span>
@@ -42,7 +42,7 @@
             <option value="female">femenino</option>
           </select>
         </label>
-        <button class="buttonForm" type="submit">Agregar persona</button>
+        <button id="buttonForm" type="submit">Agregar persona</button>
       </form>
     </main>
     <footer>

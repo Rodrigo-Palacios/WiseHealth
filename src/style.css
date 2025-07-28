@@ -29,11 +29,14 @@ body {
   grid-template-rows: auto 1fr auto;
   padding-inline: 15vw;
   min-width: 320px;
+  justify-content: center;
   
 }
 
 header {
   padding-top: 2vh;
+  width: 100%;
+  height: auto;
 }
 
 main {
@@ -45,6 +48,8 @@ main {
 }
 
 footer {
+  width: 100%;
+  height: auto;
   display: inline;
   justify-items: center;
   justify-self: center;
@@ -95,9 +100,18 @@ label {
 form {
   background-color: #F5F8F2;
   padding: 2vh;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 #age {
-  width: 2vw;
+  width: 35px;
   text-align: center;
+}
+
+@media(max-width: 570px) {
+  body {
+    padding: 0;
+    justify-content: center;
+  }
 }
