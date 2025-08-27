@@ -1,15 +1,23 @@
-import { showPeople } from "./showList";
+import { loadPeople } from "./showList";
 // seleciona el boton del form
 const btnForm = document.getElementById('buttonForm');
 
 // Crea un objeto donde que se almacena en listedPeople
 class Person {
     constructor(name, phone, email, age, gender) {
+        
+        this.id = Person.#getNextId();
         this.name = name    
         this.phone = phone
         this.email = email
         this.age = age
         this.gender = gender    
+    }
+
+    static #nextId = 0;
+
+    static #getNextId() {
+        return ++ this.#nextId;
     }
 }
 
@@ -17,6 +25,7 @@ class Person {
 let listedPeople = [];
 
 btnForm.addEventListener('click', (e) => {
+    
     e.preventDefault();
     
     //Obtine los compos del form
@@ -39,6 +48,6 @@ btnForm.addEventListener('click', (e) => {
         form.reset()
     }
         
-    showPeople();
+    loadPeople();
 
 }) 

@@ -2,6 +2,7 @@
   font-family: Segoe UI, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 700;
+  font-size: 1em;
 
   /* color-scheme: light dark; */
   color: #6BBF59;
@@ -11,6 +12,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 100%;
 }
 
 a {
@@ -27,7 +35,7 @@ body {
   display: grid;
   min-height: 100dvh;
   grid-template-rows: auto 1fr auto;
-  padding-inline: 15vw;
+  padding-inline: 10vw;
   min-width: 320px;
   justify-content: center;
   
@@ -50,10 +58,9 @@ main {
 footer {
   width: 100%;
   height: auto;
-  display: inline;
+  display: grid;
   justify-items: center;
-  justify-self: center;
-  padding-bottom: 3vh;
+  padding: 3vh 0;
 }
 
 h1 {
@@ -112,6 +119,80 @@ form {
 @media(max-width: 570px) {
   body {
     padding: 0;
-    justify-content: center;
+    justify-self: center;
+    padding-top: 10%;
+    
   }
+  header {
+    padding-top: 0;
+  }
+  main {
+    padding: 0;
+  };
+  
+}
+
+#info {
+  width: 100%;
+  justify-self: center;
+  overflow-x: auto;
+}
+
+#tablePeople {
+  width: 100%;
+  max-width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  margin-top: 1vh;
+  
+}
+
+/* #tablePeople th, */
+#tablePeople td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+thead {
+  background-color: #6BBF59;
+  color: white;
+}
+
+th {
+  font-size: .8em;
+  padding: .5rem;
+  text-align: center;
+  border-bottom: 2px solid #398E37;
+}
+
+td { 
+  font-size: .8em;
+  padding: .5vh 1vw;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody {
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f5f8f2;
+}
+
+tbody tr:hover {
+  background-color: #d2eedb;
+  cursor: pointer;
+}
+
+td button {
+  padding: 5px 10px;
+  background-color: #ff000079;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+td button:hover{
+  background-color: #ff0000;
 }
