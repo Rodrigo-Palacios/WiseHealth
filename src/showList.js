@@ -87,7 +87,7 @@ export function showPeople(data) {
       const btnTd = document.createElement('td');
       const btnTbl = document.createElement('button');
       btnTbl.setAttribute('value', `${person.id}`);
-      btnTbl.setAttribute('onclick', deletePerson(e));
+      
       
       name.textContent = `${person.name}`;
       age.textContent = `${person.age}`;
@@ -114,9 +114,4 @@ export function showPeople(data) {
 
   }
   
-}
-
-
-function deletePerson(e) {
-  console.log(e)
 }
