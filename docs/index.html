@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>WiseHealth</title>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="index.html">
+        <svg width="400" height="80" viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="80" rx="20" fill="#F5F8F2"/><g><path d="M56 54c8-8 24-8 32 0" stroke="#6BBF59" stroke-width="2.5" fill="none"/><ellipse cx="72" cy="38" rx="16" ry="20" fill="#D2EEDB" stroke="#6BBF59" stroke-width="3"/><path d="M72 46c4-4 10-10 16-4s0 14-16 26c-16-12-20-22-16-26s12 0 16 4z" fill="#fff" stroke="#6BBF59" stroke-width="2"/></g><text x="120" y="52" fill="#398E37" font-size="40" font-family="Segoe UI, Arial, sans-serif" font-weight="bold">WiseHealth</text></svg>
+      </a>
+      
+    </header>
+    <main>
+      <form name="newPerson">
+        <label for="name">
+          <span>Nombre:</span>
+          <input type="text" id="name" name="name" required/>
+        </label>
+        <label for="age">
+          <span>Edad:</span>
+          <input type="number" id="age" name="age" required>
+        </label>
+        <label>
+          <span>Genero:</span>
+          <select name="gender" id="gender" required>
+            <option value="">--Selecciona una opción--</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </label>
+        <label for="phone">
+          <span>Teléfono</span>
+          <input type="tel" id="phone" name="phone" size="10" minlength="10" maxlength="10" required>
+        </label>
+        <label for="email">
+          <span>Correo</span>
+          <input type="email" id="email" name="email" required>
+        </label>
+        <button id="buttonForm" type="submit">Agregar persona</button>
+      </form>
+      <section>
+        <div id="info"></div>
+      </section>
+    </main>
+    <footer>
+      <a class="aFooter" href="index.html">
+        <svg width="400" height="80" viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="80" rx="20" fill="#F5F8F2"/><g><path d="M56 54c8-8 24-8 32 0" stroke="#6BBF59" stroke-width="2.5" fill="none"/><ellipse cx="72" cy="38" rx="16" ry="20" fill="#D2EEDB" stroke="#6BBF59" stroke-width="3"/><path d="M72 46c4-4 10-10 16-4s0 14-16 26c-16-12-20-22-16-26s12 0 16 4z" fill="#fff" stroke="#6BBF59" stroke-width="2"/></g><text x="120" y="52" fill="#398E37" font-size="40" font-family="Segoe UI, Arial, sans-serif" font-weight="bold">WiseHealth</text></svg>
+      </a>
+      <p class="slogan">Tu tranquilidad es nuestra prioridad.</p>
+    </footer>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
