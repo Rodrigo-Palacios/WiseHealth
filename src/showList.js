@@ -1,3 +1,4 @@
+import { deletePerson } from './deletePerson.js'
 
 
 export function loadPeople() {
@@ -6,13 +7,12 @@ export function loadPeople() {
   const storedPeople = localStorage.getItem("list");
   //verifica si la variable contiene informacion y la convierte en caso contrario crea un array vacio.
   const peopleArray = storedPeople ? JSON.parse(storedPeople) : [];
-  // const peopleArray = JSON.parse(storedPeople);
-
-  showPeople(peopleArray);
+  //Devuelve el arreglo actualizado
+  return peopleArray;
   
 }
 
-export function showPeople(data) {
+export function showPeople() {
    
   if (!document.getElementById('tablePeople')) {
     const renderInfo = document.getElementById('info');    
@@ -25,6 +25,15 @@ export function showPeople(data) {
     tablePeople.appendChild(theadPeople);
     tablePeople.appendChild(tbodyPeople);
     
+    tbodyPeople.addEventListener('click', (e) => {
+      
+      const btn = e.target.closest('button');
+      if (btn) {
+        let id = btn.dataset.id;
+        deletePerson(id);
+      }
+    });
+
     theadPeople.innerHTML = `
     <tr>
       <th>Nombre</th>
@@ -35,6 +44,8 @@ export function showPeople(data) {
       <th>Eliminar</th>
     </tr>
     `;
+
+    const data = loadPeople();
     
     data.forEach(person => {
       
@@ -46,7 +57,8 @@ export function showPeople(data) {
       const email = document.createElement('td');
       const btnTd = document.createElement('td');
       const btnTbl = document.createElement('button');
-      btnTbl.setAttribute('value', `${person.id}`);
+      btnTbl.setAttribute('data-id', `${person.id}`);
+      btnTbl.setAttribute('type', 'button');
       
       
       name.textContent = `${person.name}`;
@@ -76,7 +88,18 @@ export function showPeople(data) {
     
     tBody.innerHTML = '';
 
-      data.forEach(person => {
+    const data = loadPeople();
+
+    if (data.length === 0 ) {
+      const message = document.createElement('tr');
+      message.innerHTML = `
+      <td colspan="6">No hay personas registradas</td>
+      `;
+
+      tBody.appendChild(message);
+    }
+
+    data.forEach(person => {
       
       const trTable = document.createElement('tr');   
       const name = document.createElement('td');
@@ -86,7 +109,8 @@ export function showPeople(data) {
       const email = document.createElement('td');
       const btnTd = document.createElement('td');
       const btnTbl = document.createElement('button');
-      btnTbl.setAttribute('value', `${person.id}`);
+      btnTbl.setAttribute('data-id', `${person.id}`);
+      btnTbl.setAttribute('type', 'button');
       
       
       name.textContent = `${person.name}`;
@@ -107,10 +131,7 @@ export function showPeople(data) {
       trTable.appendChild(btnTd)
       tBody.appendChild(trTable);
       
-      
-    })
-
-    
+    })    
 
   }
   

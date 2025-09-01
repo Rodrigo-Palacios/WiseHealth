@@ -1,4 +1,4 @@
-import { loadPeople } from "./showList.js";
+import { showPeople, loadPeople } from "./showList.js";
 // seleciona el boton del form
 const btnForm = document.getElementById('buttonForm');
 
@@ -6,7 +6,7 @@ const btnForm = document.getElementById('buttonForm');
 class Person {
     constructor(name, phone, email, age, gender) {
         
-        this.id = Person.#getNextId();
+        this.id = Person.#nextId;
         this.name = name    
         this.phone = phone
         this.email = email
@@ -14,19 +14,18 @@ class Person {
         this.gender = gender    
     }
 
-    static #nextId = 0;
+    static #nextId = Date.now();
 
-    static #getNextId() {
-        return ++ this.#nextId;
-    }
 }
 
-// Almacena los objetos de la clase Person
-let listedPeople = [];
+
 
 btnForm.addEventListener('click', (e) => {
     
     e.preventDefault();
+
+    // Almacena los objetos de la clase Person
+    let listedPeople = loadPeople();
     
     //Obtine los compos del form
     let form = document.forms['newPerson'];
@@ -38,6 +37,7 @@ btnForm.addEventListener('click', (e) => {
 
     const validity = form.reportValidity();
 
+    
     if (validity) {
         //Agrega los datos del form al array listedPeople
          listedPeople.push(new Person(name, phone, email, age, gender));
@@ -47,7 +47,9 @@ btnForm.addEventListener('click', (e) => {
 
         form.reset()
     }
+    
+    //TODO: Mover dentro del condicional
+    showPeople();
         
-    loadPeople();
 
-}) 
+});
