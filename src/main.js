@@ -18,8 +18,6 @@ class Person {
 
 }
 
-
-
 btnForm.addEventListener('click', (e) => {
     
     e.preventDefault();
@@ -36,7 +34,6 @@ btnForm.addEventListener('click', (e) => {
     let gender = form.gender.value;
 
     const validity = form.reportValidity();
-
     
     if (validity) {
         //Agrega los datos del form al array listedPeople
@@ -46,10 +43,8 @@ btnForm.addEventListener('click', (e) => {
         localStorage.setItem("list",JSON.stringify(listedPeople));
 
         form.reset()
-    }
-    
-    //TODO: Mover dentro del condicional
-    showPeople();
         
+        showPeople();        
+    }
 
 });
