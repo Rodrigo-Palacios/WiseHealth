@@ -1,5 +1,6 @@
 import { deletePerson } from './deletePerson.js'
-
+import { cotizar } from './cotizar.js'
+import { renderTarifas } from './renderTarifas.js';
 
 export function loadPeople() {
 
@@ -15,7 +16,17 @@ export function loadPeople() {
 export function showPeople() {
    
   if (!document.getElementById('tablePeople')) {
-    const renderInfo = document.getElementById('info');    
+    const personList = document.getElementById('personList');
+    personList.setAttribute('id', 'personListStyle');
+    const renderInfo = document.getElementById('info'); 
+    const headerSection = document.createElement('div');
+    headerSection.classList.add('headerSection');
+    const sectionImg = document.createElement('img');
+    sectionImg.setAttribute('src', './public/group.svg');
+    sectionImg.setAttribute('alt', 'group_svg');
+    sectionImg.setAttribute('id', 'group_svg')
+    const sectionName = document.createElement('h1');
+    sectionName.textContent = 'Personas en tu poliza';
     const tablePeople = document.createElement('table');
     tablePeople.setAttribute('id', 'tablePeople');
     const theadPeople = document.createElement('thead');
@@ -39,8 +50,6 @@ export function showPeople() {
       <th>Nombre</th>
       <th>Edad</th>
       <th>Género</th>
-      <th>Teléfono</th>
-      <th>Correo</th>
       <th>Eliminar</th>
     </tr>
     `;
@@ -53,8 +62,8 @@ export function showPeople() {
       const name = document.createElement('td');
       const age = document.createElement('td');
       const gender = document.createElement('td');
-      const phone = document.createElement('td');
-      const email = document.createElement('td');
+      // const phone = document.createElement('td');
+      // const email = document.createElement('td');
       const btnTd = document.createElement('td');
       const btnTbl = document.createElement('button');
       btnTbl.setAttribute('data-id', `${person.id}`);
@@ -64,8 +73,8 @@ export function showPeople() {
       name.textContent = `${person.name}`;
       age.textContent = `${person.age}`;
       gender.textContent = `${person.gender}`;
-      phone.textContent = `${person.phone}`;
-      email.textContent = `${person.email}`;
+      // phone.textContent = `${person.phone}`;
+      // email.textContent = `${person.email}`;
       btnTbl.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
       `;
@@ -73,15 +82,22 @@ export function showPeople() {
       trTable.appendChild(name);
       trTable.appendChild(age);
       trTable.appendChild(gender);
-      trTable.appendChild(phone);
-      trTable.appendChild(email);
+      // trTable.appendChild(phone);
+      // trTable.appendChild(email);
       btnTd.appendChild(btnTbl);
       trTable.appendChild(btnTd)
       tbodyPeople.appendChild(trTable);
       
     })
-    
-    renderInfo.appendChild(tablePeople);
+    headerSection.appendChild(sectionImg);
+    headerSection.appendChild(sectionName);
+    renderInfo.appendChild(headerSection)
+    renderInfo.appendChild(tablePeople);    
+
+    cotizar(data);
+
+    // renderTarifas();
+
   } else {
     
     const tBody = document.getElementById('tableBody');
@@ -105,8 +121,8 @@ export function showPeople() {
       const name = document.createElement('td');
       const age = document.createElement('td');
       const gender = document.createElement('td');
-      const phone = document.createElement('td');
-      const email = document.createElement('td');
+      // const phone = document.createElement('td');
+      // const email = document.createElement('td');
       const btnTd = document.createElement('td');
       const btnTbl = document.createElement('button');
       btnTbl.setAttribute('data-id', `${person.id}`);
@@ -116,8 +132,8 @@ export function showPeople() {
       name.textContent = `${person.name}`;
       age.textContent = `${person.age}`;
       gender.textContent = `${person.gender}`;
-      phone.textContent = `${person.phone}`;
-      email.textContent = `${person.email}`; 
+      // phone.textContent = `${person.phone}`;
+      // email.textContent = `${person.email}`; 
       btnTbl.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
       `;
@@ -125,14 +141,19 @@ export function showPeople() {
       trTable.appendChild(name);
       trTable.appendChild(age);
       trTable.appendChild(gender);
-      trTable.appendChild(phone);
-      trTable.appendChild(email);
+      // trTable.appendChild(phone);
+      // trTable.appendChild(email);
       btnTd.appendChild(btnTbl);
       trTable.appendChild(btnTd)
       tBody.appendChild(trTable);
       
-    })    
+    })
+    
+    cotizar(data);
 
+    // renderTarifas();
+
+    
   }
   
 }

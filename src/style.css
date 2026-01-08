@@ -1,12 +1,12 @@
 :root {
-  font-family: Segoe UI, Arial, sans-serif;
+  font-family: Poppins, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 700;
   font-size: 1em;
 
   /* color-scheme: light dark; */
-  color: #6BBF59;
-  background-color: #F5F8F2;
+  color: #475569;
+  background-color: #f7fcf8;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,14 +35,14 @@ body {
   display: grid;
   min-height: 100dvh;
   grid-template-rows: auto 1fr auto;
-  padding-inline: 10vw;
+  padding-inline: 10rem;
   min-width: 320px;
-  justify-content: center;
+  /* justify-content: center; */
   
 }
 
 header {
-  padding-top: 2vh;
+  
   width: 100%;
   height: auto;
 }
@@ -51,8 +51,7 @@ main {
   width: 100%;
   height: auto;
   justify-self: center;
-  background-color: #ffffff ;
-  padding: 2vh;
+  padding: 2rem;
 }
 
 footer {
@@ -60,28 +59,59 @@ footer {
   height: auto;
   display: grid;
   justify-items: center;
-  padding: 3vh 0;
+  padding-bottom: 3rem;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 1.7em;
   line-height: 1.1;
+  color: #0f172a;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+#beginning {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  border-style: solid;
+  border-width: 0;
+  border-color: #e5e7eb8c;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 7px 4px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+}
+
+.person_add {
+  display: inherit;
+}
+
+.person_add_svg {
+  padding: 1rem;
+  aspect-ratio: 1/1;
+}
+
+.pSpace {
+  margin: 0;
+  padding-left: 2rem;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.2em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #6BBF59;
+  background-color: #65c178;
   cursor: pointer;
   transition: border-color 0.25s;
-  color: #ffffff;
+  color: #f7fcf8;
 }
 button:hover {
-  border-color: #398E37;
+  border-color: #65c178;
 }
 button:focus,
 button:focus-visible {
@@ -104,12 +134,22 @@ label {
   margin: 0;
 }
 
+#personListStyle {
+  padding: 1rem;
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: #e5e7eb8c;
+  border-width: 0;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 7px 4px rgb(0 0 0 / 0.1);
+  margin-top: 2rem;
+}
+
 form {
-  background-color: #F5F8F2;
-  padding: 2vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  background-color: #f7fcf8;
+  padding: 0.5rem;
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-around;
 }
 #age {
   width: 35px;
@@ -118,19 +158,32 @@ form {
 
 @media(max-width: 570px) {
   body {
+    margin: 0;
     padding: 0;
+    padding-inline: 0;
     justify-self: center;
-    padding-top: 10%;
-    
+    box-sizing: border-box   
   }
   header {
     padding-top: 0;
-  }
+  } 
   main {
-    padding: 0;
-  };
-  
+    padding-inline: 0;
+    width: 80%;
+  }
+  form {
+    flex-wrap: wrap;
+  }
 }
+
+.headerSection {
+  display: flex;
+}
+
+#group_svg {
+  padding: 1rem;
+}
+
 
 #info {
   width: 100%;
@@ -140,10 +193,9 @@ form {
 
 #tablePeople {
   width: 100%;
-  max-width: 100%;
   table-layout: auto;
   border-collapse: collapse;
-  margin-top: 1vh;
+  /* margin-top: 4vh; */
   
 }
 
@@ -154,20 +206,21 @@ form {
 }
 
 thead {
-  background-color: #6BBF59;
+  background-color: #65c178;
   color: white;
+  font-size: 1.2em;
 }
 
 th {
   font-size: .8em;
   padding: .5rem;
   text-align: center;
-  border-bottom: 2px solid #398E37;
+  border-bottom: 2px solid #65c178;
 }
 
 td { 
   font-size: .8em;
-  padding: .5vh 1vw;
+  padding: .5rem 1rem;
   border-bottom: 1px solid #ddd;
 }
 
@@ -176,7 +229,7 @@ tbody {
 }
 
 tbody tr:nth-child(even) {
-  background-color: #f5f8f2;
+  background-color: #f7fcf8;
 }
 
 tbody tr:hover {
@@ -195,4 +248,11 @@ td button {
 
 td button:hover{
   background-color: #ff0000;
+}
+
+#tableTarifas {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  margin-top: 4vh;
 }
