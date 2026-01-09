@@ -2,6 +2,8 @@ import { deletePerson } from './deletePerson.js'
 import { cotizar } from './cotizar.js'
 import { renderTarifas } from './renderTarifas.js';
 
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
 export function loadPeople() {
 
   //recupera el listedPeople de local storage
@@ -22,9 +24,9 @@ export function showPeople() {
     const headerSection = document.createElement('div');
     headerSection.classList.add('headerSection');
     const sectionImg = document.createElement('img');
-    sectionImg.setAttribute('src', './public/group.svg');
-    sectionImg.setAttribute('alt', 'group_svg');
-    sectionImg.setAttribute('id', 'group_svg')
+    sectionImg.src = base + 'group.svg';
+    sectionImg.alt = 'group_svg';
+    sectionImg.id = 'group_svg';
     const sectionName = document.createElement('h1');
     sectionName.textContent = 'Personas en tu poliza';
     const tablePeople = document.createElement('table');
