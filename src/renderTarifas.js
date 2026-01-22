@@ -1,110 +1,285 @@
+import { toUpper } from "./toUpper.js";
+import { formMill } from "./formatoMillones.js";
+import { formPor } from "./formatoPorciento.js";
+import { formMiles } from "./formatoMiles.js";
+
+const CHECK_GREEN = new URL('./assets/check_green.svg', import.meta.url).href;
 
 //Agrega la tabla de tarifas
-export function renderTarifas(tableVM) {
+export function renderTarifas(cardsVM) {
     const tarifas = document.getElementById('tarifas');
     
-    if (!document.getElementById('tableTarifas')) {
-        const tableTarifas = document.createElement('table');
-        tableTarifas.setAttribute('id', 'tableTarifas'); 
-        tarifas.appendChild(tableTarifas);
+    if (!document.getElementById('headerTarifas')) {
+        const headerTarifas = document.createElement('div');
+        headerTarifas.id = 'headerTarifas';
+        const h2Tarifas = document.createElement('h2');
+        h2Tarifas.textContent = 'Elige tu cobertura ideal';
+        headerTarifas.appendChild(h2Tarifas);
+        const pTarifas = document.createElement('p');
+        pTarifas.textContent = 'Compara los beneficios y selecciona el plan que mejor se adapte a ti.';
+        headerTarifas.appendChild(pTarifas);
 
-        const tableHead = document.createElement('thead');
-        tableHead.innerHTML = `
-        <tr>
-            <th></th>
-            <th>Otimo</th>
-            <th>Premium</th>
-            <th>Esencial</th>
-        </tr>
-        `
-        tableTarifas.appendChild(tableHead);
+        tarifas.appendChild(headerTarifas);
 
+
+        const containerTarifas = document.createElement('div');
+        containerTarifas.id = 'containerTarifas';
         
-        tableVM.rows.forEach(row => {
-            const tableBody = document.createElement('tbody');
-            const tableRow = document.createElement('tr');
-            tableRow.textContent = row.label;
+        tarifas.appendChild(containerTarifas);
+
+        cardsVM.forEach(i => {
+
+            const nombres = {
+                optimo: "Óptimo",
+                premium: "Premium",
+                esencial: "Esencial"
+            }
+
+            //**Pone la primera letra en mayusculas */
+            const planUpper = toUpper(i.plan)
+
+            //Agreca cada card
+            const cardSpec = document.createElement('div');
+            cardSpec.id = `card${planUpper}`
+            containerTarifas.appendChild(cardSpec);
+
+            //Crea el header de cada card
+            const divPlan = document.createElement('div');
+            divPlan.id = i.plan;
+
+            const h2Plan = document.createElement('h2');
+            h2Plan.id = `h2${planUpper}`;
+            h2Plan.textContent = `${nombres[i.plan]}`;
+
+            //Agrega el h2 al div de cada plan y el div del plan al div del card
+            divPlan.appendChild(h2Plan);
+            cardSpec.appendChild(divPlan);
+
+            //Crea div con precio y vigenci del plan
+            const precioVigencia = document.createElement('div');
+            precioVigencia.id = `preci${planUpper}`;
+
+            const precio = document.createElement('span');
+            precio.textContent = mxn(i.items[4].value);
+
+            const anual = document.createElement('span');
+            anual.textContent = ' /año';
+            precioVigencia.appendChild(precio);
+            precioVigencia.appendChild(anual);
+            
+            cardSpec.appendChild(precioVigencia);
+
+            //Crea ul con la data del plan
+            const lista = document.createElement('ul');
+            lista.id = `ul${planUpper}`
+            
+            cardSpec.appendChild(lista);
 
             
-            for (const valor of row.values) {
-                const tableData = document.createElement('td');
-
-                let texto = "";
+            i.items.forEach(item => {
+                if (item.label === "Costo anual") {
+                    return;
+                }
+                const li = document.createElement('li');
                 
-                if(row.type === 'moneda'){
-                    texto = mxn(valor);
-                } else if(row.type === 'uma') {
-                    texto = valor + ' UMAM';
-                } else if(row.type = 'porcentaje') {
-                    texto = (valor * 100) + '%';
-                } else {
-                    texto = '_';
+                
+                let valueText = item.value;
+                
+                if (item.label === "Suma asegurada") {
+                    valueText = formMill(item.value);
                 }
                 
-                tableData.textContent = texto;
-                tableRow.appendChild(tableData);
+                if (item.label === "Deducible") {
+                    valueText = `${item.value} UMAM`
+                }
+                
+                if (item.label === "Coaseguro") {
+                    valueText = formPor(item.value);
+                }
+                
+                if (item.label === "Tope coaseguro") {
+                    valueText = formMiles(item.value);
+                }
+                
+                li.innerHTML = `
+                <span class="check_marck"></span>${item.label}: <strong>${valueText}</strong>
+                `;
 
-                console.log(texto);
-            }
-            tableBody.appendChild(tableRow);
-            tableTarifas.appendChild(tableBody);
+                lista.appendChild(li);
 
-            console.log(row);
+            })   
+            
+            const btnPlan = document.createElement('button');
+            btnPlan.classList.add('btnPlan');
+            btnPlan.textContent = 'Seleccionar';
+            btnPlan.value = i.plan;
+    
+            cardSpec.appendChild(btnPlan);
+
+            // console.log(btnPlan.value);
+                        
         });
+        
+        const cardOptimo = document.getElementById('optimo');
+        const cardPremium = document.getElementById('premium');
+        const cardEsencial = document.getElementById('esencial');
 
+        const pOptimo = document.createElement('p');
+        pOptimo.id = 'pOptimo';
+        pOptimo.textContent = 'Balance costo-beneficio.';
+
+        const pPremium = document.createElement('p');
+        pPremium.id = 'pPremium';
+        pPremium.textContent = 'Máxima protección posible.';
+
+        const pEsencial = document.createElement('p');
+        pEsencial.id = 'pEsencial';
+        pEsencial.textContent = 'Protección básica vital.';
+
+        cardOptimo.appendChild(pOptimo);
+        cardPremium.appendChild(pPremium);
+        cardEsencial.appendChild(pEsencial);
+              
     } else {
-        tarifas.textContent = '';
-        const tableTarifas = document.createElement('table');
-        tableTarifas.setAttribute('id', 'tableTarifas'); 
-        tarifas.appendChild(tableTarifas);
+        //Limpia el contenedor de las cards
+        document.getElementById('tarifas').textContent = '';
+        const headerTarifas = document.createElement('div');
+        headerTarifas.id = 'headerTarifas';
+        const h2Tarifas = document.createElement('h2');
+        h2Tarifas.textContent = 'Elige tu cobertura ideal';
+        headerTarifas.appendChild(h2Tarifas);
+        const pTarifas = document.createElement('p');
+        pTarifas.textContent = 'Compara los beneficios y selecciona el plan que mejor se adapte a ti.';
+        headerTarifas.appendChild(pTarifas);
 
-        const tableHead = document.createElement('thead');
-        tableHead.innerHTML = `
-        <tr>
-            <th></th>
-            <th>Otimo</th>
-            <th>Premium</th>
-            <th>Esencial</th>
-        </tr>
-        `
-        tableTarifas.appendChild(tableHead);
+        tarifas.appendChild(headerTarifas);
 
+
+        const containerTarifas = document.createElement('div');
+        containerTarifas.id = 'containerTarifas';
         
-        tableVM.rows.forEach(row => {
-            const tableBody = document.createElement('tbody');
-            const tableRow = document.createElement('tr');
-            tableRow.textContent = row.label;
+        tarifas.appendChild(containerTarifas);
+
+        cardsVM.forEach(i => {
+
+            const nombres = {
+                optimo: "Óptimo",
+                premium: "Premium",
+                esencial: "Esencial"
+            }
+
+            //**Pone la primera letra en mayusculas */
+            const planUpper = toUpper(i.plan)
+
+            //Agreca cada card
+            const cardSpec = document.createElement('div');
+            cardSpec.id = `card${planUpper}`
+            containerTarifas.appendChild(cardSpec);
+
+            //Crea el header de cada card
+            const divPlan = document.createElement('div');
+            divPlan.id = i.plan;
+
+            const h2Plan = document.createElement('h2');
+            h2Plan.id = `h2${planUpper}`;
+            h2Plan.textContent = `${nombres[i.plan]}`;
+
+            //Agrega el h2 al div de cada plan y el div del plan al div del card
+            divPlan.appendChild(h2Plan);
+            cardSpec.appendChild(divPlan);
+
+            //Crea div con precio y vigenci del plan
+            const precioVigencia = document.createElement('div');
+            precioVigencia.id = `preci${planUpper}`;
+
+            const precio = document.createElement('span');
+            precio.textContent = mxn(i.items[4].value);
+
+            const anual = document.createElement('span');
+            anual.textContent = ' /año';
+            precioVigencia.appendChild(precio);
+            precioVigencia.appendChild(anual);
+            
+            cardSpec.appendChild(precioVigencia);
+
+            //Crea ul con la data del plan
+            const lista = document.createElement('ul');
+            lista.id = `ul${planUpper}`
+            
+            cardSpec.appendChild(lista);
 
             
-            for (const valor of row.values) {
-                const tableData = document.createElement('td');
-
-                let texto = "";
+            i.items.forEach(item => {
+                if (item.label === "Costo anual") {
+                    return;
+                }
+                const li = document.createElement('li');
                 
-                if(row.type === 'moneda'){
-                    texto = mxn(valor);
-                } else if(row.type === 'uma') {
-                    texto = valor + ' UMAM';
-                } else if(row.type = 'porcentaje') {
-                    texto = (valor * 100) + '%';
-                } else {
-                    texto = '_';
+                
+                let valueText = item.value;
+                
+                if (item.label === "Suma asegurada") {
+                    valueText = formMill(item.value);
                 }
                 
-                tableData.textContent = texto;
-                tableRow.appendChild(tableData);
+                if (item.label === "Deducible") {
+                    valueText = `${item.value} UMAM`
+                }
+                
+                if (item.label === "Coaseguro") {
+                    valueText = formPor(item.value);
+                }
+                
+                if (item.label === "Tope coaseguro") {
+                    valueText = formMiles(item.value);
+                }
+                
+                li.innerHTML = `
+                <span class="check_marck"></span>${item.label}: <strong>${valueText}</strong>
+                `;
 
-                console.log(texto);
-            }
-            tableBody.appendChild(tableRow);
-            tableTarifas.appendChild(tableBody);
+                lista.appendChild(li);
 
-            console.log(row);
+            })   
+            
+            const btnPlan = document.createElement('button');
+            btnPlan.classList.add('btnPlan');
+            btnPlan.textContent = 'Seleccionar';
+            btnPlan.value = nombres[i.plan];
+    
+            cardSpec.appendChild(btnPlan);
+
+            console.log(btnPlan.value);
+
+                        
         });
+        
+        const cardOptimo = document.getElementById('optimo');
+        const cardPremium = document.getElementById('premium');
+        const cardEsencial = document.getElementById('esencial');
+
+        const pOptimo = document.createElement('p');
+        pOptimo.id = 'pOptimo';
+        pOptimo.textContent = 'Balance costo-beneficio.';
+
+        const pPremium = document.createElement('p');
+        pPremium.id = 'pPremium';
+        pPremium.textContent = 'Máxima protección posible.';
+
+        const pEsencial = document.createElement('p');
+        pEsencial.id = 'pEsencial';
+        pEsencial.textContent = 'Protección básica vital.';
+
+        cardOptimo.appendChild(pOptimo);
+        cardPremium.appendChild(pPremium);
+        cardEsencial.appendChild(pEsencial);
+        
+        
     }
-    console.log(tableVM);
+    // console.log(tableVM);
 }
 
 const mxn = pesos => new Intl.NumberFormat('es-MX', {
         style: 'currency', currency: 'MXN', maximumFractionDigits: 2
-    }).format(pesos);
+}).format(pesos);
+

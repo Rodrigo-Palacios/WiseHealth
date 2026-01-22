@@ -14,6 +14,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
 .logo {
   display: block;
   max-width: 100%;
@@ -35,23 +43,26 @@ body {
   display: grid;
   min-height: 100dvh;
   grid-template-rows: auto 1fr auto;
-  padding-inline: 10rem;
+  /* padding-inline: 10rem; */
   min-width: 320px;
-  /* justify-content: center; */
+  
   
 }
 
 header {
-  
   width: 100%;
   height: auto;
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 main {
   width: 100%;
   height: auto;
+  max-width: 80rem;
   justify-self: center;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 footer {
@@ -68,17 +79,28 @@ h1 {
   color: #0f172a;
 }
 
+h2 {
+  color: #0f172a;
+}
+
 p {
-  font-size: 1.2em;
+  font-size: 1rem;
+}
+
+span {
+  font-size: 1.9rem;
+  line-height: 2.25;
+  color: #0f172a;
 }
 
 #beginning {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 1rem;
   border-style: solid;
-  border-width: 0;
+  border-width: 1px;
   border-color: #e5e7eb8c;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 7px 4px rgb(0 0 0 / 0.1);
   padding: 1rem;
@@ -96,6 +118,10 @@ p {
 .pSpace {
   margin: 0;
   padding-left: 2rem;
+}
+
+strong {
+  color: #000;
 }
 
 button {
@@ -139,9 +165,9 @@ label {
   border-radius: 1rem;
   border-style: solid;
   border-color: #e5e7eb8c;
-  border-width: 0;
+  border-width: 1px;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 7px 4px rgb(0 0 0 / 0.1);
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 
 form {
@@ -171,9 +197,30 @@ form {
     padding-inline: 0;
     width: 80%;
   }
+  .pSpace {
+    padding: 0;
+  }
   form {
     flex-wrap: wrap;
+    flex-direction: column;
   }
+  span {
+    font-size: 1.9rem;
+  }
+  
+
+  #containerTarifas {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  #cardPremium {
+    grid-row-start: 2;
+  }
+  #cardEsencial {
+    grid-row-start: 3;
+  }
+
 }
 
 .headerSection {
@@ -250,9 +297,102 @@ td button:hover{
   background-color: #ff0000;
 }
 
-#tableTarifas {
-  width: 100%;
-  table-layout: auto;
-  border-collapse: collapse;
-  margin-top: 4vh;
+#tarifas {
+  padding: 3rem;
 }
+
+#headerTarifas {
+  justify-items: center;
+}
+
+#containerTarifas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-rows: repeat(1, 1fr);
+  gap: 3rem;
+}
+
+#cardOptimo, #cardPremium, #cardEsencial {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border-style: solid;
+  border-width: 1;
+  border-color: #d3d3d3;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 7px 4px rgb(0 0 0 / 0.1);
+  padding-block: 1rem;
+}
+
+#h2Optimo, #h2Premium, #h2Esencial {
+  /* margin: 0;
+  padding: 0.5rem; */
+  justify-self: center;
+}
+
+#pOptimo, #pPremium, #pEsencial {
+  /* margin: 0;
+  padding-inline: 0.5rem; */
+  justify-self: center;
+
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  padding: 1rem;
+  gap: 0.3rem;
+}
+
+
+.check_marck {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #65c178;
+  border-width: 2px;
+  background-image: url("./check_green.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#cardOptimo:hover,
+#cardPremium:hover,
+#cardEsencial:hover {
+  border-color: #398E37;
+}
+
+#cardOptimo:hover .check_marck,
+#cardPremium:hover .check_marck,
+#cardEsencial:hover .check_marck {
+  border-radius: 50%;
+  border-color: #398E37;
+  background-color: #398E37;
+  background-image: url("./check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  
+}
+
+#cardOptimo:hover .btnPlan,
+#cardPremium:hover .btnPlan,
+#cardEsencial:hover .btnPlan {
+  background-color: #398E37;
+}
+
+
+

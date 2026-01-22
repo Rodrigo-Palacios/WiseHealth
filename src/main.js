@@ -7,14 +7,14 @@ const btnForm = document.getElementById('buttonForm');
 class Person {
     constructor(name, /*phone, email,*/ age, gender) {
         
-        this.id = Person.#nextId;
+        this.id = Person.#nextId++;
         this.name = name    
         // this.phone = phone
         // this.email = email
         this.age = age
         this.gender = gender    
     }
-
+    
     static #nextId = Date.now();
 
 }

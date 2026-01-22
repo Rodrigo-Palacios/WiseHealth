@@ -27,7 +27,7 @@ export function showPeople() {
     sectionImg.src = base + 'group.svg';
     sectionImg.alt = 'group_svg';
     sectionImg.id = 'group_svg';
-    const sectionName = document.createElement('h1');
+    const sectionName = document.createElement('h2');
     sectionName.textContent = 'Personas en tu poliza';
     const tablePeople = document.createElement('table');
     tablePeople.setAttribute('id', 'tablePeople');

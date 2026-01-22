@@ -4,7 +4,7 @@ import { renderTarifas } from './renderTarifas.js';
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 //obtiene la data de local storage que se renderizo
-export async function cotizar(data) {
+export async function cotizar(data) {  
       
     const personas = data;
     
@@ -24,23 +24,39 @@ export async function cotizar(data) {
         headers: {'Accept': 'application/json'}       
     });
     
+    //Obtiene un objeto con los costos de cada plan
     const infoPlanes = await planes.json();
     // console.log('infoPlanes:', infoPlanes);
-
+    
+    //Obtiene un objeto con las caracteristicas de cada plan
     const payload = await costos.json();
     // console.log('payload', payload);
 
+    //Verifica que infoPlanes sea un arreglo sino lo es lo lo crea
     const costosArray = Array.isArray(payload.items) ? payload.items : [];
-    const planesArray = Array.isArray(infoPlanes.item) ? infoPlanes.item : [];
- 
-    const specByPlan = new Map(planesArray.map( specs => [specs.plan, specs]));
-    
-    const merged = costosArray.map(costo => {
-        const agregaA = specByPlan.get(costo.plan) ||{};
-        return {...costo, ...agregaA}
-    })
+    // console.log(costosArray);
 
-    const planOrden = ["optimo", "premium", "esencial"];
+    //Verifica que paylod sea un arreglo sino lo es lo lo crea
+    const planesArray = Array.isArray(infoPlanes.item) ? infoPlanes.item : [];
+    // console.log(planesArray);
+ 
+    //crea un Map(diccionario indexado por llave-valor) que contiene una tupla donde la key es el plan y el value las caracteristicas
+    const specByPlan = new Map(planesArray.map( specs => [specs.plan, specs]));
+    // console.log(specByPlan);
+    
+    //Recorre costosArray y specByPlan, los combina usando costos.plan con las especificaciones obtenidad de specByPlan y crea un arreglo
+    const merged = costosArray.map(costo => {
+        const agregaA = specByPlan.get(costo.plan) || {};// || {} => si no lo encuentra crea el objeto vacio
+        return {...costo, ...agregaA}
+    });
+    // console.log(merged);
+    
+    //Crea un Map separado por plan
+    const porPlan = new Map(merged.map(plan => [plan.plan, plan]));
+
+    // console.log(porPlan);
+
+    const planOrden = ['optimo', 'premium', 'esencial'];
 
     const atributos = [
         {label: "Suma asegurada", key: "suma_asegurada", type: "moneda"},
@@ -50,38 +66,29 @@ export async function cotizar(data) {
         { label: "Costo anual", key: "total", type: "moneda" }
     ]
 
-    const porPlan = {};
-    for (const plan of merged) {
-        porPlan[plan.plan] = plan;
-    }
+    let cardsVM = [];
 
-    const tableVM = {
-        columns: planOrden,
-        rows: []
-    }
+    for( let planName of planOrden){
+        const planData = porPlan.get(planName);
 
-    //recorre atributos (filas)
-    for (const atributo of atributos) {
-        const valoresFila = [];
-        
-        //recorre planes (colums)
-        for(const planNombre of planOrden) {
-            const ordenPlan = porPlan[planNombre];
-            const valor = ordenPlan ? ordenPlan[atributo.key] : null;
-            valoresFila.push(valor);
+        let card = {
+            plan: planName,
+            items: []
         }
 
-        tableVM.rows.push({
-            label: atributo.label,
-            type: atributo.type,
-            values:valoresFila
-        });
+        for(let atributo of atributos) {
+            card.items.push({
+                label: atributo.label,
+                type: atributo.type,
+                value: planData[atributo.key]
+
+            });
+        }
+        cardsVM.push(card);
     }
 
+    // console.log(cardsVM);  
 
-    console.log(tableVM);
-
-    renderTarifas(tableVM);
-
+    renderTarifas(cardsVM);
 
 }
