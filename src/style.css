@@ -134,12 +134,13 @@ button {
   background-color: #65c178;
   cursor: pointer;
   transition: border-color 0.25s;
-  color: #f7fcf8;
+  color: #0f172a;
 }
 button:hover {
-  border-color: #65c178;
+  border-color: #fff;
 }
-button:focus,
+
+button:focus
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
@@ -312,7 +313,7 @@ td button:hover{
   gap: 3rem;
 }
 
-#cardOptimo, #cardPremium, #cardEsencial {
+.cardOptimo, .cardPremium, .cardEsencial {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -369,15 +370,15 @@ li {
   background-size: contain;
 }
 
-#cardOptimo:hover,
-#cardPremium:hover,
-#cardEsencial:hover {
+.cardOptimo:hover,
+.cardPremium:hover,
+.cardEsencial:hover {
   border-color: #398E37;
 }
 
-#cardOptimo:hover .check_marck,
-#cardPremium:hover .check_marck,
-#cardEsencial:hover .check_marck {
+.cardOptimo:hover .check_marck,
+.cardPremium:hover .check_marck,
+.cardEsencial:hover .check_marck {
   border-radius: 50%;
   border-color: #398E37;
   background-color: #398E37;
@@ -388,11 +389,29 @@ li {
   
 }
 
-#cardOptimo:hover .btnPlan,
-#cardPremium:hover .btnPlan,
-#cardEsencial:hover .btnPlan {
+.btnPlan {
+  color: #f7fcf8;
+}
+
+.cardOptimo:hover .btnPlan,
+.cardPremium:hover .btnPlan,
+.cardEsencial:hover .btnPlan {
   background-color: #398E37;
+  color: #0f172a;
 }
 
 
+.cardSelected {
+  border-color: #398E37;
+}
 
+.checkSelected {
+  background-color: #398E37;
+  background-image: url('./check.svg');
+  border-color: #398E37;
+}
+
+.btnSelected {
+  color: #0f172a;
+  background-color: #398E37;
+}

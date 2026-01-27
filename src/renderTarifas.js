@@ -2,6 +2,7 @@ import { toUpper } from "./toUpper.js";
 import { formMill } from "./formatoMillones.js";
 import { formPor } from "./formatoPorciento.js";
 import { formMiles } from "./formatoMiles.js";
+import { btnSelect } from "./btnPlan.js";
 
 const CHECK_GREEN = new URL('./assets/check_green.svg', import.meta.url).href;
 
@@ -40,7 +41,7 @@ export function renderTarifas(cardsVM) {
 
             //Agreca cada card
             const cardSpec = document.createElement('div');
-            cardSpec.id = `card${planUpper}`
+            cardSpec.classList.add(`card${planUpper}`)
             containerTarifas.appendChild(cardSpec);
 
             //Crea el header de cada card
@@ -71,7 +72,7 @@ export function renderTarifas(cardsVM) {
 
             //Crea ul con la data del plan
             const lista = document.createElement('ul');
-            lista.id = `ul${planUpper}`
+            lista.id = `ul${planUpper}`;
             
             cardSpec.appendChild(lista);
 
@@ -80,8 +81,7 @@ export function renderTarifas(cardsVM) {
                 if (item.label === "Costo anual") {
                     return;
                 }
-                const li = document.createElement('li');
-                
+                const li = document.createElement('li');                
                 
                 let valueText = item.value;
                 
@@ -110,35 +110,35 @@ export function renderTarifas(cardsVM) {
             })   
             
             const btnPlan = document.createElement('button');
-            btnPlan.classList.add('btnPlan');
+            btnPlan.classList.add(`btn${i.plan}`);
+            btnPlan.dataset.planId = i.plan;
             btnPlan.textContent = 'Seleccionar';
-            btnPlan.value = i.plan;
-    
+            
             cardSpec.appendChild(btnPlan);
-
-            // console.log(btnPlan.value);
-                        
+            
         });
         
         const cardOptimo = document.getElementById('optimo');
         const cardPremium = document.getElementById('premium');
         const cardEsencial = document.getElementById('esencial');
-
+        
         const pOptimo = document.createElement('p');
         pOptimo.id = 'pOptimo';
         pOptimo.textContent = 'Balance costo-beneficio.';
-
+        
         const pPremium = document.createElement('p');
         pPremium.id = 'pPremium';
         pPremium.textContent = 'Máxima protección posible.';
-
+        
         const pEsencial = document.createElement('p');
         pEsencial.id = 'pEsencial';
         pEsencial.textContent = 'Protección básica vital.';
-
+        
         cardOptimo.appendChild(pOptimo);
         cardPremium.appendChild(pPremium);
         cardEsencial.appendChild(pEsencial);
+
+        btnSelect();
               
     } else {
         //Limpia el contenedor de las cards
@@ -173,7 +173,7 @@ export function renderTarifas(cardsVM) {
 
             //Agreca cada card
             const cardSpec = document.createElement('div');
-            cardSpec.id = `card${planUpper}`
+            cardSpec.classList.add(`card${planUpper}`)
             containerTarifas.appendChild(cardSpec);
 
             //Crea el header de cada card
@@ -204,7 +204,7 @@ export function renderTarifas(cardsVM) {
 
             //Crea ul con la data del plan
             const lista = document.createElement('ul');
-            lista.id = `ul${planUpper}`
+            lista.id = `ul${planUpper}`;
             
             cardSpec.appendChild(lista);
 
@@ -213,8 +213,7 @@ export function renderTarifas(cardsVM) {
                 if (item.label === "Costo anual") {
                     return;
                 }
-                const li = document.createElement('li');
-                
+                const li = document.createElement('li');                
                 
                 let valueText = item.value;
                 
@@ -244,35 +243,35 @@ export function renderTarifas(cardsVM) {
             
             const btnPlan = document.createElement('button');
             btnPlan.classList.add('btnPlan');
+            btnPlan.classList.add(`btn${i.plan}`);
+            btnPlan.dataset.planId = i.plan;
             btnPlan.textContent = 'Seleccionar';
-            btnPlan.value = nombres[i.plan];
-    
+            
             cardSpec.appendChild(btnPlan);
-
-            console.log(btnPlan.value);
-
-                        
+            
         });
         
         const cardOptimo = document.getElementById('optimo');
         const cardPremium = document.getElementById('premium');
         const cardEsencial = document.getElementById('esencial');
-
+        
         const pOptimo = document.createElement('p');
         pOptimo.id = 'pOptimo';
         pOptimo.textContent = 'Balance costo-beneficio.';
-
+        
         const pPremium = document.createElement('p');
         pPremium.id = 'pPremium';
         pPremium.textContent = 'Máxima protección posible.';
-
+        
         const pEsencial = document.createElement('p');
         pEsencial.id = 'pEsencial';
         pEsencial.textContent = 'Protección básica vital.';
-
+        
         cardOptimo.appendChild(pOptimo);
         cardPremium.appendChild(pPremium);
         cardEsencial.appendChild(pEsencial);
+
+        btnSelect();
         
         
     }
