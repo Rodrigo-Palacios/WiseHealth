@@ -370,24 +370,27 @@ li {
   background-size: contain;
 }
 
-.cardOptimo:hover,
-.cardPremium:hover,
-.cardEsencial:hover {
-  border-color: #398E37;
+@media (hover: hover) {
+  .cardOptimo:hover,
+  .cardPremium:hover,
+  .cardEsencial:hover {
+    border-color: #398E37;
+  }
+  .cardOptimo:hover .check_marck,
+  .cardPremium:hover .check_marck,
+  .cardEsencial:hover .check_marck {
+    border-radius: 50%;
+    border-color: #398E37;
+    background-color: #398E37;
+    background-image: url("./check.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+  }
 }
 
-.cardOptimo:hover .check_marck,
-.cardPremium:hover .check_marck,
-.cardEsencial:hover .check_marck {
-  border-radius: 50%;
-  border-color: #398E37;
-  background-color: #398E37;
-  background-image: url("./check.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  
-}
+
 
 .btnPlan {
   color: #f7fcf8;

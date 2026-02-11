@@ -10,6 +10,14 @@ const state = {
 export function btnSelect () {
     const containerTarifas = document.getElementById('containerTarifas');
     containerTarifas.addEventListener('click', event => {
+
+        const btton = event.target.closest('button');
+
+        if(!btton) {
+            console.log(btton)
+            return;
+        }
+        console.log(btton)
         
         const plan = event.target.dataset.planId;
         const container = `card${toUpper(plan)}`;
@@ -21,6 +29,7 @@ export function btnSelect () {
         const ulCheckMarck = document.getElementById(`${ul}`);
         const span = ulCheckMarck.querySelectorAll('span');
 
+        //Quita style previo
         if (state.selectedPlan) {
             //Quita el estilo de la card previamente seleccionada
             const stateContainer = document.querySelector(`.${state.containerPlan}`)
