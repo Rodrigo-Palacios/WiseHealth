@@ -110,6 +110,7 @@ export function renderTarifas(cardsVM) {
             })   
             
             const btnPlan = document.createElement('button');
+            btnPlan.classList.add('btnPlan')
             btnPlan.classList.add(`btn${i.plan}`);
             btnPlan.dataset.planId = i.plan;
             btnPlan.textContent = 'Seleccionar';

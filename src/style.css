@@ -299,7 +299,7 @@ td button:hover{
 }
 
 #tarifas {
-  padding: 3rem;
+  padding: 2rem;
 }
 
 #headerTarifas {
@@ -388,6 +388,12 @@ li {
     background-size: contain;
     
   }
+  .cardOptimo:hover .btnPlan,
+  .cardPremium:hover .btnPlan,
+  .cardEsencial:hover .btnPlan {
+    background-color: #398E37;
+    color: #0f172a;
+  }
 }
 
 
@@ -396,12 +402,6 @@ li {
   color: #f7fcf8;
 }
 
-.cardOptimo:hover .btnPlan,
-.cardPremium:hover .btnPlan,
-.cardEsencial:hover .btnPlan {
-  background-color: #398E37;
-  color: #0f172a;
-}
 
 
 .cardSelected {
