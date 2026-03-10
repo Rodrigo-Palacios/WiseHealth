@@ -5,7 +5,7 @@ export function deletePerson(id) {
     let findId = parseInt(id);
     const storedPeople = loadPeople();
     
-    console.log(findId);
+    // console.log(findId);
     
     let finded = storedPeople.findIndex(find => find.id === findId);
 

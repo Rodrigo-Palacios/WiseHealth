@@ -4,7 +4,7 @@ import { formPor } from "./formatoPorciento.js";
 import { formMiles } from "./formatoMiles.js";
 import { btnSelect } from "./btnPlan.js";
 
-const CHECK_GREEN = new URL('./assets/check_green.svg', import.meta.url).href;
+
 
 //Agrega la tabla de tarifas
 export function renderTarifas(cardsVM) {
@@ -139,7 +139,10 @@ export function renderTarifas(cardsVM) {
         cardPremium.appendChild(pPremium);
         cardEsencial.appendChild(pEsencial);
 
-        btnSelect();
+        btnSelect(cardsVM);
+        localStorage.removeItem('saveOrder');
+
+        containerTarifas.scrollIntoView({ behavior: "smooth", block: "start"});
               
     } else {
         //Limpia el contenedor de las cards
@@ -271,10 +274,12 @@ export function renderTarifas(cardsVM) {
         cardOptimo.appendChild(pOptimo);
         cardPremium.appendChild(pPremium);
         cardEsencial.appendChild(pEsencial);
+        
+        localStorage.removeItem('saveOrder');
+        
+        btnSelect(cardsVM);
 
-        btnSelect();
-        
-        
+        // containerTarifas.scrollIntoView({ behavior: "smooth", block: "start"});
     }
     // console.log(tableVM);
 }

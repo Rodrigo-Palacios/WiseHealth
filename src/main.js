@@ -22,6 +22,7 @@ class Person {
 btnForm.addEventListener('click', (e) => {
     
     
+    
     e.preventDefault();
 
     // Almacena los objetos de la clase Person

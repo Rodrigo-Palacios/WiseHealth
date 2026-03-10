@@ -1,4 +1,6 @@
 import { toUpper } from "./toUpper.js";
+import { createOrderPlan } from "./createOrder.js";
+import { renderGoPay  } from "./renderGoPay.js"
 
 const state = {
     selectedPlan: false,
@@ -7,20 +9,25 @@ const state = {
     btnClick: null
 }
 
-export function btnSelect () {
+export function btnSelect (cardsVM) {
     const containerTarifas = document.getElementById('containerTarifas');
     containerTarifas.addEventListener('click', event => {
 
+        localStorage.removeItem('saveOrder');
+        const secCheckOut = document.getElementById('checkOut');
+        secCheckOut.textContent = '';
+        secCheckOut.hidden = true;
+        
         const btton = event.target.closest('button');
 
         if(!btton) {
             console.log(btton)
             return;
         }
-        console.log(btton)
-        
         const plan = event.target.dataset.planId;
         const container = `card${toUpper(plan)}`;
+        
+        createOrderPlan(plan, cardsVM)
         
         const ul = `ul${toUpper(plan)}`;
 
@@ -63,7 +70,9 @@ export function btnSelect () {
         selected.classList.add('btnSelected');
         state.btnClick = `.btn${plan}`;
 
-        state.selectedPlan = true;      
+        state.selectedPlan = true;  
+        
+        renderGoPay();
 
     });
 
