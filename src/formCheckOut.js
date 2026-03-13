@@ -1,21 +1,33 @@
 const base = import.meta.env.BASE_URL;
 import { toUpper } from './toUpper.js'
+import { methodPayment } from "./chooseMethod.js"
 export function renderCheckOut(orden) {
 
     let order = orden;
 
     let planId = toUpper(order.planId)
 
-    console.log(planId);
+    // console.log(planId);
 
     const section = document.getElementById('checkOut');
     section.hidden = false;
+
+    const container = document.createElement('div');
+    container.classList.add('divTitle');
+
+    section.appendChild(container);
+
+    const imgTitle = document.createElement('img');
+    imgTitle.classList.add('imgCheckOut');
+    imgTitle.src = `${base}public/order_approve.svg`;
+
+    container.appendChild(imgTitle);
 
     const title = document.createElement('h2');
     title.classList.add('titleCheckOut');
     title.textContent ='Resumen y Pago';
     
-    section.appendChild(title);
+    container.appendChild(title);
 
     const contCheckOut = document.createElement('div');
     contCheckOut.classList.add('contCheckOut');
@@ -65,11 +77,11 @@ export function renderCheckOut(orden) {
     const divMethod = document.createElement('div');
     divMethod.id = 'divMethod';
     divMethod.innerHTML = `
-        <button id="cardPay" class="methodCheckOut" name="tarjeta de crédito / debito" type="button">
+        <button id="cardPay" class="methodCheckOut" data-id-btn="card" type="button">
             <img src="${base}public/credit_card.svg">
             Tarjeta de Crédito / Débito
         </button>
-        <button id="speiPay" class="methodCheckOut" name="tarjeta de crédito / debito" type="button">
+        <button id="speiPay" class="methodCheckOut" data-id-btn="spei" type="button">
             <img src="${base}public/account_balance.svg">
             Hacer una Trasferencia SPEI
         </button>
@@ -80,6 +92,9 @@ export function renderCheckOut(orden) {
     contCheckOut.appendChild(resum);
     contCheckOut.appendChild(pay);
 
+    section.scrollIntoView( { behavior: "smooth", block: "start"});
+
+    methodPayment();
 
 }
 

@@ -17,6 +17,10 @@ export function btnSelect (cardsVM) {
         const secCheckOut = document.getElementById('checkOut');
         secCheckOut.textContent = '';
         secCheckOut.hidden = true;
+
+        const paymentSec = document.getElementById('payment');
+        paymentSec.textContent = '';
+        paymentSec.hidden = true;
         
         const btton = event.target.closest('button');
 

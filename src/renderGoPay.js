@@ -71,9 +71,4 @@ export function renderGoPay() {
         
     }
 
-
-
-
-    
-
 }

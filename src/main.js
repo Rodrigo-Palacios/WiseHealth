@@ -50,4 +50,12 @@ btnForm.addEventListener('click', (e) => {
     }
     showPeople();
 
+    const secCheckOut = document.getElementById('checkOut');
+    secCheckOut.textContent = '';
+    secCheckOut.hidden = true;
+
+    const paymentSec = document.getElementById('payment');
+    paymentSec.textContent = '';
+    paymentSec.hidden = true;
+
 });

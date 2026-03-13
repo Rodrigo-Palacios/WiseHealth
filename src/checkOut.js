@@ -22,7 +22,7 @@ export function checkGoPay() {
 
             localStorage.setItem('saveOrder', JSON.stringify(orden));
             
-            console.log(orden);
+            // console.log(orden);
 
             renderCheckOut(orden);
 

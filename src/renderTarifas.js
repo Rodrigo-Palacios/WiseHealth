@@ -142,7 +142,7 @@ export function renderTarifas(cardsVM) {
         btnSelect(cardsVM);
         localStorage.removeItem('saveOrder');
 
-        containerTarifas.scrollIntoView({ behavior: "smooth", block: "start"});
+        headerTarifas.scrollIntoView({ behavior: "smooth", block: "start"});
               
     } else {
         //Limpia el contenedor de las cards

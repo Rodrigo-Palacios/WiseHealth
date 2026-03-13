@@ -43,19 +43,19 @@
         </div>
         <p class="pSpace">Agregue personas a la cotización para obtener un precio estimado.</p>
         
-        <form name="newPerson">
+        <form class="formNewPerson" name="newPerson">
           <label aria-describedby="name" for="name">Nombre:
             <input type="text" id="name" name="name" required/>
           </label>
           <label aria-describedby="gender" for="gender">Genero:
             <select name="gender" id="gender" required>
-              <option value="">--Selecciona una opción--</option>
+              <option value="">Selecciona una opción</option>
               <option value="Masculino">Masculino</option>
               <option value="Femenino">Femenino</option>
             </select>
           </label>
           <label aria-describedby="age" for="age">Edad:
-            <input type="number" id="age" name="age" required>
+            <input id="formAge" type="number" id="age" name="age" min="0" max="99" required>
           </label>
           <button id="buttonForm" type="submit">Agregar persona</button>
         </form>
@@ -66,6 +66,7 @@
       </section>
       <section id="tarifas"></section>
       <section id="checkOut" hidden></section>
+      <section id="payment" hidden></section>
     </main>
     <footer>
       <a alt="logo" aria-label="logo" class="aFooter" href="index.html">

@@ -5,7 +5,7 @@
   font-size: 1.2em;
 
   /* color-scheme: light dark; */
-  color: #475569;
+  color: #2E2E2E;
   background-color: #f7fcf8;
 
   font-synthesis: none;
@@ -76,11 +76,11 @@ footer {
 h1 {
   font-size: 1.7em;
   line-height: 1.1;
-  color: #0f172a;
+  color: #212121;
 }
 
 h2 {
-  color: #0f172a;
+  color: #212121;
 }
 
 p {
@@ -91,7 +91,7 @@ p {
 span {
   font-size: 1.9rem;
   line-height: 2.25;
-  color: #0f172a;
+  color: #212121;
 }
 
 #beginning {
@@ -105,6 +105,10 @@ span {
   border-color: #e5e7eb8c;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 7px 4px rgb(0 0 0 / 0.1);
   padding: 1rem;
+}
+
+.formNewPerson{
+  margin: 1rem;
 }
 
 .person_add {
@@ -122,7 +126,7 @@ span {
 }
 
 strong {
-  color: #000;
+  color: #212121;
 }
 
 button {
@@ -135,7 +139,7 @@ button {
   background-color: #65c178;
   cursor: pointer;
   transition: border-color 0.25s;
-  color: #0f172a;
+  color: #212121;
 }
 button:hover {
   border-color: #fff;
@@ -146,16 +150,45 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+input {
+  padding-inline: 0.5rem;
+  font-size: 1em;
+  color: #2E2E2E;
+  max-width: 700px;
+  height: 35px;
+  border-radius: .5rem;
+  border-color: #858585;
+  border-width: 1px;
+  border-style: solid;
+}
+
+select {
+  max-width: 800px;
+  height: 35px;
+  color: #2E2E2E;
+  font-size: 1em;
+  border-radius: 0.5rem;
+  border-color: #858585;
+  border-width: 1px;
+  border-style: solid;
+}
+
+#formAge {
+  width: 50px;
+  text-align: center; 
+}
+
+#formAge::-webkit-outer-spin-button,
+#formAge::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .buttonForm {
   display: block;
   width: auto;
   margin: 0 auto;
   margin-top: 2rem;
 
-}
-
-label {
-  margin: 1rem;
 }
 
 .slogan{
@@ -256,7 +289,7 @@ form {
 
 thead {
   background-color: #65c178;
-  color: white;
+  color: #212121;
   font-size: 1.2em;
 }
 
@@ -305,6 +338,7 @@ td button:hover{
 
 #headerTarifas {
   justify-items: center;
+  margin: 3rem;
 }
 
 #containerTarifas {
@@ -376,14 +410,14 @@ li {
   .cardOptimo:hover,
   .cardPremium:hover,
   .cardEsencial:hover {
-    border-color: #398E37;
+    border-color: #65c178;
   }
   .cardOptimo:hover .check_marck,
   .cardPremium:hover .check_marck,
   .cardEsencial:hover .check_marck {
     border-radius: 50%;
-    border-color: #398E37;
-    background-color: #398E37;
+    border-color: #65c178;
+    background-color: #65c178;
     background-image: url("./check.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -393,8 +427,8 @@ li {
   .cardOptimo:hover .btnPlan,
   .cardPremium:hover .btnPlan,
   .cardEsencial:hover .btnPlan {
-    background-color: #398E37;
-    color: #0f172a;
+    background-color: #65c178;
+    color: #212121;
   }
 }
 
@@ -407,25 +441,25 @@ li {
 
 
 .cardSelected {
-  border-color: #398E37;
+  border-color: #65c178;
 }
 
 .checkSelected {
-  background-color: #398E37;
+  background-color: #65c178;
   background-image: url('./check.svg');
-  border-color: #398E37;
+  border-color: #65c178;
 }
 
 .btnSelected {
-  color: #0f172a;
-  background-color: #398E37;
+  color: #212121;
+  background-color: #65c178;
 }
 
 #btnGoPay {
   display: block;
   margin: 4rem auto;
-  color: #0f172a;
-  background-color: #398E37;
+  color: #212121;
+  background-color: #65c178;
 }
 
 #imgGoPay {
@@ -448,9 +482,15 @@ li {
   margin-bottom: 2rem;
 }
 
-.titleCheckOut {
-  padding-bottom: 1rem;
-  box-shadow: 0 1px 0px 0px rgb(0 0 0 / 0.1);
+.divTitle {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgCheckOut {
+  width: 40px;
+  padding: 1rem;
+  box-sizing: content-box;
 }
 
 .contCheckOut {
@@ -525,7 +565,73 @@ li {
   background-color: #65c178;
 }
 
-.methodCheckOut:focus {
-  background-color: #398E37;
+.methodCheckOutSelect {
+  background-color: #65c178;
 }
 
+#divPayment {
+  box-sizing: border-box;
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 3rem;
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: #e5e7eb8c;
+  border-width: 1px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 7px 4px rgb(0 0 0 / 0.1);
+}
+
+.divTitlePayment {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgPayment {
+  width: 40px;
+  padding: 1rem;
+  box-sizing: content-box;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+.cardNumber {
+  display: flex;
+  flex-direction: row;
+   align-items: center;
+}
+
+#cardNumber {
+  text-align: center;
+  padding-inline: 0;
+  padding-left: 1.5rem;
+  width: auto;
+}
+
+#imgCardNumber {
+  position: absolute;
+  margin-inline: 1rem;
+}
+
+.formFieldsRow {
+  max-width: 700px;
+  margin-block: -1.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+#expDate {
+  max-width: 200px;
+}
+
+#cvv{
+  max-width: 200px;
+}
+
+#completePayment {
+  margin: 1rem;
+  width: 100%;
+}
