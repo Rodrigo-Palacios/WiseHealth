@@ -19,7 +19,7 @@ export function renderCheckOut(orden) {
 
     const imgTitle = document.createElement('img');
     imgTitle.classList.add('imgCheckOut');
-    imgTitle.src = `${base}public/order_approve.svg`;
+    imgTitle.src = `${base}order_approve.svg`;
 
     container.appendChild(imgTitle);
 
@@ -78,11 +78,11 @@ export function renderCheckOut(orden) {
     divMethod.id = 'divMethod';
     divMethod.innerHTML = `
         <button id="cardPay" class="methodCheckOut" data-id-btn="card" type="button">
-            <img src="${base}public/credit_card.svg">
+            <img src="${base}credit_card.svg">
             Tarjeta de Crédito / Débito
         </button>
         <button id="speiPay" class="methodCheckOut" data-id-btn="spei" type="button">
-            <img src="${base}public/account_balance.svg">
+            <img src="${base}account_balance.svg">
             Hacer una Trasferencia SPEI
         </button>
     `;

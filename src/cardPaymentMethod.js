@@ -2,7 +2,6 @@ import { cardExpDate } from "./expDate.js"
 const base = import.meta.env.BASE_URL;
 export function cardPayment() {
     const section = document.getElementById('payment');
-    section.hidden = false;
     
     const container = document.createElement('div');
     container.id = 'divPayment';
@@ -61,8 +60,10 @@ export function cardPayment() {
 
     section.appendChild(container);
 
-    section.scrollIntoView( { behavior: "smooth", block: "start" });
-
     cardExpDate();
-
+    
+    section.hidden = false;
+    
+    section.scrollIntoView( { behavior: "smooth", block: "start" });
+    
 }
