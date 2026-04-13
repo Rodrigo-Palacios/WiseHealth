@@ -1,4 +1,4 @@
-(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))t(n);new MutationObserver(n=>{for(const o of n)if(o.type==="childList")for(const r of o.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&t(r)}).observe(document,{childList:!0,subtree:!0});function e(n){const o={};return n.integrity&&(o.integrity=n.integrity),n.referrerPolicy&&(o.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?o.credentials="include":n.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function t(n){if(n.ep)return;n.ep=!0;const o=e(n);fetch(n.href,o)}})();function R(c){let a=parseInt(c);const e=$();let t=e.findIndex(r=>r.id===a);e.splice(t,1),localStorage.setItem("list",JSON.stringify(e)),_();const n=document.getElementById("checkOut");n.textContent="",n.hidden=!0;const o=document.getElementById("payment");o.textContent="",o.hidden=!0}function O(c){let a=c.slice(0,1).toUpperCase(),e=c.slice(1);return`${a}${e}`}function k(c){return`$${c/1e6}M`}function M(c){return`${c*100}%`}function N(c){return`$${c/1e3}K`}function U(c,a){const t=a.find(o=>o.plan===c).items.find(o=>o.label==="Costo anual").value,n={orderId:crypto.randomUUID(),planId:c,amount:Number(t.toFixed(2)),currency:"MXN",status:"draft",createdAt:new Date().toISOString()};localStorage.setItem("saveOrder",JSON.stringify(n))}const A="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='%230f172a'%20viewBox='0%20-960%20960%20960'%3e%3cpath%20d='M480-344%20240-584l56-56%20184%20184%20184-184%2056%2056z'/%3e%3c/svg%3e";function j(){document.getElementById("expDate").addEventListener("input",a=>{let e=a.target.value.replace("/","");e.length>=2&&(e=e.slice(0,2)+"/"+e.slice(2)),a.target.value=e})}const D="/WiseHealth/";function V(){const c=document.getElementById("payment"),a=document.createElement("div");a.id="divPayment";const e=document.createElement("div");e.classList.add("divTitlePayment");const t=document.createElement("img");t.classList.add("imgPayment"),t.src=`${D}public/payments.svg`,e.appendChild(t);const n=document.createElement("h2");n.textContent="Información de Pago",e.appendChild(n),a.appendChild(e);const o=document.createElement("div");o.id="paymentForm",o.innerHTML=`
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))t(n);new MutationObserver(n=>{for(const o of n)if(o.type==="childList")for(const r of o.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&t(r)}).observe(document,{childList:!0,subtree:!0});function e(n){const o={};return n.integrity&&(o.integrity=n.integrity),n.referrerPolicy&&(o.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?o.credentials="include":n.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function t(n){if(n.ep)return;n.ep=!0;const o=e(n);fetch(n.href,o)}})();function R(c){let a=parseInt(c);const e=$();let t=e.findIndex(r=>r.id===a);e.splice(t,1),localStorage.setItem("list",JSON.stringify(e)),_();const n=document.getElementById("checkOut");n.textContent="",n.hidden=!0;const o=document.getElementById("payment");o.textContent="",o.hidden=!0}function O(c){let a=c.slice(0,1).toUpperCase(),e=c.slice(1);return`${a}${e}`}function k(c){return`$${c/1e6}M`}function M(c){return`${c*100}%`}function N(c){return`$${c/1e3}K`}function U(c,a){const t=a.find(o=>o.plan===c).items.find(o=>o.label==="Costo anual").value,n={orderId:crypto.randomUUID(),planId:c,amount:Number(t.toFixed(2)),currency:"MXN",status:"draft",createdAt:new Date().toISOString()};localStorage.setItem("saveOrder",JSON.stringify(n))}const A="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='%230f172a'%20viewBox='0%20-960%20960%20960'%3e%3cpath%20d='M480-344%20240-584l56-56%20184%20184%20184-184%2056%2056z'/%3e%3c/svg%3e";function j(){document.getElementById("expDate").addEventListener("input",a=>{let e=a.target.value.replace("/","");e.length>=2&&(e=e.slice(0,2)+"/"+e.slice(2)),a.target.value=e})}const D="/WiseHealth/";function V(){const c=document.getElementById("payment"),a=document.createElement("div");a.id="divPayment";const e=document.createElement("div");e.classList.add("divTitlePayment");const t=document.createElement("img");t.classList.add("imgPayment"),t.src=`${D}payments.svg`,e.appendChild(t);const n=document.createElement("h2");n.textContent="Información de Pago",e.appendChild(n),a.appendChild(e);const o=document.createElement("div");o.id="paymentForm",o.innerHTML=`
         <form id="formPayment" >
             <div class="formFields">
                 <label aria-describedby="name" for="cardName">Nombre del titular</label>
@@ -9,7 +9,7 @@
                 <label aria-describedby="cardNumber" for="cardNumber">Número de tarjeta</label>
                 <div class="cardNumber">
                     <input id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" type="text" inputmode="numeric" pattern="[0-9]{15-16}" minlength="15" maxlength="16" required/>
-                    <img id="imgCardNumber" src="${D}public/credit_card_light.svg"/>
+                    <img id="imgCardNumber" src="${D}credit_card_light.svg"/>
                 </div>
             </div>
             <div class="formFieldsRow">
@@ -36,7 +36,7 @@
                     <button class="infoCopy"><img class="infoImgCopy" src="${z}public/content_copy.svg"/>CLABE</button>
                 `},2e3),console.log(a)}catch(a){console.error("Error al compiar: ",a),alert("No se pudo copiar el texto")}})}function W(c){const a=document.querySelector(".infoCopyRef");a.addEventListener("click",async()=>{await navigator.clipboard.writeText(c);const e=a.textContent;a.textContent="¡Copiado!",setTimeout(()=>{a.textContent=e},2e3)})}const L="/WiseHealth/";function X(){const c=localStorage.getItem("saveOrder"),e=JSON.parse(c).orderId.slice(0,7),t=document.getElementById("payment"),n=document.createElement("div");n.id="divPayment",n.innerHTML=`
         <div class="divTitlePayment">
-            <img class="imgPayment" src="${L}public/account_balance_payment.svg"/>
+            <img class="imgPayment" src="${L}account_balance_payment.svg"/>
             <h2>Datos de Trasnferencia SPEI</h2>
         </div>
     `;const o=document.createElement("div");o.classList.add("containerInfo"),o.innerHTML=`
@@ -55,7 +55,7 @@
                     <p>CLABE (18 Dígitos)</p>
                     <p><strong>0000 1234 5678 9012 34</strong></p>
                 </div>
-                <button class="infoCopy"><img class="infoImgCopy" src="${L}public/content_copy.svg"/>CLABE</button>
+                <button class="infoCopy"><img class="infoImgCopy" src="${L}content_copy.svg"/>CLABE</button>
             </div>
         </div>
         <div class="refBanc">
@@ -63,14 +63,14 @@
                 <p>Referencia Bancaria</p>
                 <p><strong data-order-Id="orderId">${e}</strong></p>
             </div>
-            <button class="infoCopyRef"><img class="infoImgCopy" src="${L}public/content_copy.svg"/>Referencia</button>
+            <button class="infoCopyRef"><img class="infoImgCopy" src="${L}content_copy.svg"/>Referencia</button>
         </div>
         <div class="infoP">
             <label for="email">Email:</label>
             <input class="speiEmail" type="email" name="email" id="email">
         </div>
         <div class="paragraphP">
-            <img src="${L}public/info_24.svg" class="imgInfoSPEI"/>
+            <img src="${L}info_24.svg" class="imgInfoSPEI"/>
             <p class="paragraphSPEI">
                 Tu pago se acreditará de forma inmediata una vez realizada la transferencia.
             </p>

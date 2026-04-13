@@ -11,7 +11,7 @@ export function cardPayment() {
 
     const imgPayment = document.createElement('img');
     imgPayment.classList.add('imgPayment');
-    imgPayment.src = `${base}public/payments.svg`;
+    imgPayment.src = `${base}payments.svg`;
     
     divTitlePayment.appendChild(imgPayment);
     
@@ -35,7 +35,7 @@ export function cardPayment() {
                 <label aria-describedby="cardNumber" for="cardNumber">Número de tarjeta</label>
                 <div class="cardNumber">
                     <input id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" type="text" inputmode="numeric" pattern="[0-9]{15-16}" minlength="15" maxlength="16" required/>
-                    <img id="imgCardNumber" src="${base}public/credit_card_light.svg"/>
+                    <img id="imgCardNumber" src="${base}credit_card_light.svg"/>
                 </div>
             </div>
             <div class="formFieldsRow">

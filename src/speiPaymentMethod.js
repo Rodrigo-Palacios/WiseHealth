@@ -13,7 +13,7 @@ export function speiPayment () {
     container.id = 'divPayment';
     container.innerHTML = `
         <div class="divTitlePayment">
-            <img class="imgPayment" src="${base}public/account_balance_payment.svg"/>
+            <img class="imgPayment" src="${base}account_balance_payment.svg"/>
             <h2>Datos de Trasnferencia SPEI</h2>
         </div>
     `;
@@ -36,7 +36,7 @@ export function speiPayment () {
                     <p>CLABE (18 Dígitos)</p>
                     <p><strong>0000 1234 5678 9012 34</strong></p>
                 </div>
-                <button class="infoCopy"><img class="infoImgCopy" src="${base}public/content_copy.svg"/>CLABE</button>
+                <button class="infoCopy"><img class="infoImgCopy" src="${base}content_copy.svg"/>CLABE</button>
             </div>
         </div>
         <div class="refBanc">
@@ -44,14 +44,14 @@ export function speiPayment () {
                 <p>Referencia Bancaria</p>
                 <p><strong data-order-Id="orderId">${refOrden}</strong></p>
             </div>
-            <button class="infoCopyRef"><img class="infoImgCopy" src="${base}public/content_copy.svg"/>Referencia</button>
+            <button class="infoCopyRef"><img class="infoImgCopy" src="${base}content_copy.svg"/>Referencia</button>
         </div>
         <div class="infoP">
             <label for="email">Email:</label>
             <input class="speiEmail" type="email" name="email" id="email">
         </div>
         <div class="paragraphP">
-            <img src="${base}public/info_24.svg" class="imgInfoSPEI"/>
+            <img src="${base}info_24.svg" class="imgInfoSPEI"/>
             <p class="paragraphSPEI">
                 Tu pago se acreditará de forma inmediata una vez realizada la transferencia.
             </p>
